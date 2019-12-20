@@ -48,7 +48,7 @@ class ComputadoraController extends Controller
      */
     public function show(Computadora $computadora)
     {
-        //
+        return view('computadoras.computadoraShow', compact('computadora'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ComputadoraController extends Controller
      */
     public function edit(Computadora $computadora)
     {
-        //
+        return view('computadoras.computadoraForm', compact('computadora'));
     }
 
     /**
@@ -71,7 +71,11 @@ class ComputadoraController extends Controller
      */
     public function update(Request $request, Computadora $computadora)
     {
-        //
+        $computadora->marca = $request->marca;
+        $computadora->modelo = $request->modelo;
+        $computadora->save();
+
+        return redirect()->route('computadora.show', $computadora->id);
     }
 
     /**
@@ -82,6 +86,7 @@ class ComputadoraController extends Controller
      */
     public function destroy(Computadora $computadora)
     {
-        //
+        $computadora->delete();
+        return redirect()->route('computadora.index');
     }
 }
