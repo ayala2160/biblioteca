@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Estudiante;
+use App\Libro;
+use Illuminate\Http\Request;
+
+class LibroController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $libros = Libro::with('estudiantes:id,nombre')->get();
+        return view('libros.libroIndex', compact('libros'));
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $estudiantes = Estudiante::pluck('nombre', 'id');
+        return view('libros.libroForm', compact('estudiantes'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $libro = Libro::create($request->only('titulo'));
+        $libro->estudiantes()->attach($request->estudiante_id);
+        return redirect()->route('libro.show', $libro->id);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Libro $libro)
+    {
+        return view('libros.libroShow', compact('libro'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Libro $libro)
+    {
+        $estudiantes = Estudiante::pluck('nombre', 'id');
+        $prestamos = $libro->estudiantes()->pluck('id');
+        return view('libros.libroForm', compact('estudiantes', 'libro', 'prestamos'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Libro $libro)
+    {
+        $libro->titulo = $request->titulo;
+        $libro->save();
+        $libro->estudiantes()->sync($request->estudiante_id);
+        return redirect()->route('libro.show', $libro->id);
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Libro  $libro
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Libro $libro)
+    {
+        //
+    }
+}

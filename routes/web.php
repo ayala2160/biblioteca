@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('computadora', 'ComputadoraController');
 Route::resource('estudiante', 'EstudianteController');
+Route::resource('libro', 'libroController');
