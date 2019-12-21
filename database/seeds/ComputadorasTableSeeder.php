@@ -11,7 +11,7 @@ class ComputadorasTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Computadora::create(['marca' => 'Toshiba', 'modelo' => 'NB100']);
-        App\Computadora::create(['marca' => 'Samsung', 'modelo' => 'SMG10']);
+        App\Computadora::create(['marca' => 'Toshiba', 'modelo_pc' => 'NB100']);
+        App\Computadora::create(['marca' => 'Samsung', 'modelo_pc' => 'SMG10']);
     }
 }

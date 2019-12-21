@@ -38,7 +38,7 @@ class ComputadoraController extends Controller
     {
         $request->validate([
           'marca' => 'required|string|min:2|max:255',
-          'modelo' => 'required|string|min:3|max:255',
+          'modelo_pc' => 'required|string|min:3|max:255',
         ]);
 
         Computadora::create($request->all());
@@ -78,11 +78,11 @@ class ComputadoraController extends Controller
     {
         $request->validate([
           'marca' => 'required|string|min:2|max:255',
-          'modelo' => 'required|string|min:3|max:255',
+          'modelo_pc' => 'required|string|min:3|max:255',
         ]);
 
         $computadora->marca = $request->marca;
-        $computadora->modelo = $request->modelo;
+        $computadora->modelo_pc = $request->modelo_pc;
         $computadora->save();
 
         return redirect()->route('computadora.show', $computadora->id);

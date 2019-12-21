@@ -8,7 +8,7 @@ class Computadora extends Model
 {
     protected $table = 'computadoras';
     public $timestamps = false;
-    protected $fillable = ['marca', 'modelo'];
+    protected $fillable = ['marca', 'modelo_pc'];
 
     public function estudiantes()
     {

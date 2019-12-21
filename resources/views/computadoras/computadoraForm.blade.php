@@ -30,8 +30,8 @@
                         {!! Form::text('marca', null, ['class' => $errors->has('marca') ? 'form-control is-invalid' : 'form-control']) !!}
                       </div>
                       <div class="form-group">
-                        {!! Form::label('modelo', 'Modelo') !!}
-                        {!! Form::text('modelo', null, ['class' => $errors->has('modelo') ? 'form-control is-invalid' : 'form-control']) !!}
+                        {!! Form::label('modelo_pc', 'Modelo') !!}
+                        {!! Form::text('modelo_pc', null, ['class' => $errors->has('modelo_pc') ? 'form-control is-invalid' : 'form-control']) !!}
                       </div>
                       <button type="submit" class="btn btn-primary">Enviar</button>
                       <a href="{{ route('computadora.index') }}" class="btn btn-primary">Regresar</a>

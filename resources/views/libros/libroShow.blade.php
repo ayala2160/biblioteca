@@ -15,9 +15,10 @@
                   @endforeach
                 </ul>
                 <a href="{{ route('libro.create') }}" class="btn btn-primary">Agregar libro</a>
-                <a href="{{ route('libro.index') }}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
+            @include('archivos.archivoForm', ['modelo_id' => $libro->id, 'modelo_type' => 'App\Libro'])
+            @include('archivos.archivoIndex', ['archivos' => $libro->archivos])
         </div>
     </div>
 </div>

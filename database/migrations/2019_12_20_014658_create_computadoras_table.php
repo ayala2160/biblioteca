@@ -16,7 +16,7 @@ class CreateComputadorasTable extends Migration
         Schema::create('computadoras', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('marca');
-            $table->string('modelo');
+            $table->string('modelo_pc');
             $table->timestamps();
         });
     }

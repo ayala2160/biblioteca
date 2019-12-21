@@ -23,7 +23,7 @@
                           <tr>
                             <td>{{ $computadora->id }}</td>
                             <td>{{ $computadora->marca }}</td>
-                            <td>{{ $computadora->modelo }}</td>
+                            <td>{{ $computadora->modelo_pc }}</td>
                             <td>
                                 <a href="{{ route('computadora.show', $computadora->id) }}" class="btn btn-sm btn-info">Detalles</a>
                             </td>

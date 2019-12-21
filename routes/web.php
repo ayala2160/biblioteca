@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('computadora', 'ComputadoraController');
 Route::resource('estudiante', 'EstudianteController');
 Route::resource('libro', 'libroController');
+//Archivos
+Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');

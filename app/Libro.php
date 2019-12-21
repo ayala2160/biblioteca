@@ -14,6 +14,6 @@ class Libro extends Model
     }
     public function archivos()
     {
-        return $this->morphMany(Archivo::class, 'modelo_archivo');
+        return $this->morphMany(Archivo::class, 'modelo');
     }
 }

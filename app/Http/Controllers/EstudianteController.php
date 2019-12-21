@@ -27,8 +27,8 @@ class EstudianteController extends Controller
     {
         $computadoras = Computadora::pluck('marca', 'id');
         return view('estudiantes.estudianteForm', compact('computadoras'));
-        
-        $computadoras = Computadora::pluck('modelo', 'id');
+
+        $computadoras = Computadora::pluck('modelo_pc', 'id');
         return view('estudiantes.estudianteForm', compact('computadoras'));
     }
 

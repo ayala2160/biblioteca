@@ -27,13 +27,15 @@
                             <td>{{ $estudiante->correo }}</td>
                             <td>{{ $estudiante->fecha_nacimiento->format('d/m/Y') }}</td>
                             <td>{{ $estudiante->equipos->marca }}</td>
-                            <td>{{ $estudiante->equipos->modelo }}</td>
+                            <td>{{ $estudiante->equipos->modelo_pc }}</td>
                           </tr>
                       </tbody>
                     </table>
                     <a href="{{ route('estudiante.create') }}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
+            @include('archivos.archivoForm', ['modelo_id' => $estudiante->id, 'modelo_type' => 'App\Estudiante'])
+            @include('archivos.archivoIndex', ['archivos' => $estudiante->archivos])
         </div>
     </div>
 </div>
