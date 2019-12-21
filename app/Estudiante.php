@@ -18,4 +18,8 @@ class Estudiante extends Model
     {
       return $this->belongsToMany(Libro::class);
     }
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class, 'modelo_archivo');
+    }
 }
