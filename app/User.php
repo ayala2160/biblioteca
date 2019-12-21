@@ -37,3 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+public function ejemplares()
+{
+    return $this->hasMany(Libros::class);
+}

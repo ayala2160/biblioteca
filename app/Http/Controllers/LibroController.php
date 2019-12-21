@@ -36,7 +36,11 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        $libro = Libro::create($request->only('titulo'));
+        //Agrega user_id a $request
+        $request->merge(['user_id' => \Auth::id()]);
+        //Crea un nuevo registro con la información del formulario y el user_id
+        $libro = Libro::create($request->all());
+        //Relaciona el registro con los estudiantes seleccionados
         $libro->estudiantes()->attach($request->estudiante_id);
         return redirect()->route('libro.show', $libro->id);
     }
@@ -72,6 +76,7 @@ class LibroController extends Controller
     public function update(Request $request, Libro $libro)
     {
         $libro->titulo = $request->titulo;
+        $libro->autor = $request->autor;
         $libro->save();
         $libro->estudiantes()->sync($request->estudiante_id);
         return redirect()->route('libro.show', $libro->id);
