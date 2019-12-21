@@ -36,6 +36,11 @@ class ComputadoraController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+          'marca' => 'required|string|min:2|max:255',
+          'modelo' => 'required|string|min:3|max:255',
+        ]);
+
         Computadora::create($request->all());
         return redirect()->route('computadora.index');
     }
@@ -71,6 +76,11 @@ class ComputadoraController extends Controller
      */
     public function update(Request $request, Computadora $computadora)
     {
+        $request->validate([
+          'marca' => 'required|string|min:2|max:255',
+          'modelo' => 'required|string|min:3|max:255',
+        ]);
+
         $computadora->marca = $request->marca;
         $computadora->modelo = $request->modelo;
         $computadora->save();

@@ -8,6 +8,17 @@
                 <div class="card-header">Registro de equipos</div>
 
                 <div class="card-body">
+                    <!-- Código que muestra errores -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     @if(isset($computadora))
                       {!! Form::model($computadora, ['route' => ['computadora.update', $computadora->id], 'method' => 'PATCH']) !!}
                     @else
@@ -16,11 +27,11 @@
                       @csrf
                       <div class="form-group">
                         {!! Form::label('marca', 'Marca') !!}
-                        {!! Form::text('marca', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('marca', null, ['class' => $errors->has('marca') ? 'form-control is-invalid' : 'form-control']) !!}
                       </div>
                       <div class="form-group">
                         {!! Form::label('modelo', 'Modelo') !!}
-                        {!! Form::text('modelo', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('modelo', null, ['class' => $errors->has('modelo') ? 'form-control is-invalid' : 'form-control']) !!}
                       </div>
                       <button type="submit" class="btn btn-primary">Enviar</button>
                       <a href="{{ route('computadora.index') }}" class="btn btn-primary">Regresar</a>
