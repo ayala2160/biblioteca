@@ -8,25 +8,23 @@
                 <div class="card-header">Registro de equipos</div>
 
                 <div class="card-body">
-                    <form action="{{ route('computadora.store') }}" method="POST">
                     @if(isset($computadora))
-                      <form action="{{ route('computadora.update', $computadora->id) }}" method="POST">
-                      <input type="hidden" name="_method" value="PATCH">
+                      {!! Form::model($computadora, ['route' => ['computadora.update', $computadora->id], 'method' => 'PATCH']) !!}
                     @else
-                      <form action="{{ route('computadora.store') }}" method="POST">
+                      {!! Form::open(['route' => 'computadora.store']) !!}
                     @endif
                       @csrf
                       <div class="form-group">
-                          <label for="marca">Marca</label>
-                          <input type="text" name="marca" value="{{ $computadora->marca ?? '' }}" class="form-control" id="programa">
+                        {!! Form::label('marca', 'Marca') !!}
+                        {!! Form::text('marca', null, ['class' => 'form-control']) !!}
                       </div>
                       <div class="form-group">
-                          <label for="modelo">Modelo</label>
-                          <input type="text" name="modelo" value="{{ $computadora->modelo ?? '' }}" class="form-control" id="clave">
+                        {!! Form::label('modelo', 'Modelo') !!}
+                        {!! Form::text('modelo', null, ['class' => 'form-control']) !!}
                       </div>
                       <button type="submit" class="btn btn-primary">Enviar</button>
                       <a href="{{ route('computadora.index') }}" class="btn btn-primary">Regresar</a>
-                    </form>
+                      {!! Form::close() !!}
                 </div>
             </div>
         </div>
