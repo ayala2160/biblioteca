@@ -13,4 +13,9 @@ class Estudiante extends Model
     {
       return $this->belongsTo(Computadora::class, 'computadora_id');
     }
+
+    public function ejemplares()
+    {
+      return $this->belongsToMany(Libro::class);
+    }
 }
