@@ -8,6 +8,7 @@
                 <div class="card-header">Listado de libros</div>
 
                 <div class="card-body">
+                  {{ $libros->links() }}
                 <table class="table">
                   <tr>
                     <th>Libro</th>
@@ -34,6 +35,7 @@
                     </tr>
                   @endforeach
                 </table>
+                  {{ $libros->links() }}
                 <a href="{{ route('libro.create') }}" class="btn btn-primary">Agregar libro</a>
                 </div>
             </div>

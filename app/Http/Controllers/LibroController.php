@@ -17,7 +17,7 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::with('estudiantes:id,nombre', 'user')->get();
+        $libros = Libro::with('estudiantes:id,nombre', 'user')->paginate(10);
         return view('libros.libroIndex', compact('libros'));
     }
     /**
