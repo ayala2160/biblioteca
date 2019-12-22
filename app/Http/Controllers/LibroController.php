@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Estudiante;
 use App\Libro;
+use App\Mail\LibrosDevueltos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LibroController extends Controller
 {
@@ -15,7 +17,7 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::with('estudiantes:id,nombre')->get();
+        $libros = Libro::with('estudiantes:id,nombre', 'user')->get();
         return view('libros.libroIndex', compact('libros'));
     }
     /**
@@ -90,5 +92,14 @@ class LibroController extends Controller
     public function destroy(Libro $libro)
     {
         //
+    }
+
+    public function notificarLibroDevuelto(Libro $libro)
+    {
+        //Carga los usuarios relacionados con un libro
+        $libro->load('user');
+        //Envía correo al usuario
+        Mail::to($libro->user->email)->send(new LibrosDevueltos($libro));
+        return redirect()->route('libro.index');
     }
 }

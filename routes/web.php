@@ -18,12 +18,13 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::middleware(['auth', 'verified'])->group(function () {
+//Route::middleware(['auth', 'verified'])->group(function () {
 Route::resource('computadora', 'ComputadoraController');
 Route::resource('estudiante', 'EstudianteController');
 Route::resource('libro', 'libroController');
+Route::get('libro/{libro}/devuelto', 'LibroController@notificarLibroDevuelto')->name('libro.devuelto');
 //Archivos
 Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
 Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
 Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
-});
+//});

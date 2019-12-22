@@ -12,6 +12,8 @@
                   <tr>
                     <th>Libro</th>
                     <th>Estudiantes</th>
+                    <th>Usuario</th>
+                    <th>Acciones</th>
                   </tr>
                   @foreach($libros as $libro)
                     <tr>
@@ -22,6 +24,12 @@
                           <li>{{ $estudiante->nombre }}</li>
                         @endforeach
                         </ul>
+                      </td>
+                      <td>
+                          {{ $libro->user->name }}
+                      </td>
+                      <td>
+                          <a href="{{ route('libro.devuelto', $libro->id) }}" class="btn btn-sm btn-primary">Notificar devolución</a>
                       </td>
                     </tr>
                   @endforeach
