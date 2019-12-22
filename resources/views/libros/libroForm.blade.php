@@ -17,6 +17,10 @@
                           {!! Form::label('titulo', 'Titulo del libro') !!}
                           {!! Form::text('titulo', null, ['class' => 'form-control']) !!}
                       </div>
+                        <div class="form-group">
+                            {!! Form::label('autor', 'Autor del libro') !!}
+                            {!! Form::text('autor', null, ['class' => 'form-control']) !!}
+                        </div>
                       <div class="form-group">
                           {!! Form::label('estudiante_id[]', 'Estudiantes') !!}
                           {!! Form::select('estudiante_id[]', $estudiantes, $prestamos ?? null, ['class' => 'form-control', 'multiple']) !!}
