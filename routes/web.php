@@ -10,15 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Welcome
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Verificación de email
 Auth::routes(['verify' => true]);
-
+//Inicio
 Route::get('/home', 'HomeController@index')->name('home');
+//Middleware
 //Route::middleware(['auth', 'verified'])->group(function () {
+//Libros, computadoras y estudiantes
 Route::resource('computadora', 'ComputadoraController');
 Route::resource('estudiante', 'EstudianteController');
 Route::resource('libro', 'libroController');
@@ -29,7 +31,8 @@ Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('a
 Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
 //Bienvenida
 Route::get('/hola/{nombre?}/{apellido?}', 'SitioController@bienvenida');
-//Contacto
+//Contacto & mensajes
 Route::get('contacto', 'SitioController@contacto')->name('contacto');
 Route::post('contacto-guardar', 'SitioController@guardaContacto')->name('guardar');
+Route::get('ver-mensajes', 'SitioController@verMensajes')->name('ver-mensajes');
 //});
