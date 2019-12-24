@@ -38,6 +38,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     public function ejemplares()
     {
-        return $this->hasMany(Libros::class);
+        return $this->hasMany(Libro::class);
     }
 }

@@ -44,7 +44,9 @@ class LibroController extends Controller
         $libro = Libro::create($request->all());
         //Relaciona el registro con los estudiantes seleccionados
         $libro->estudiantes()->attach($request->estudiante_id);
-        return redirect()->route('libro.show', $libro->id);
+        
+        return redirect()->route('libro.show', $libro->id)
+          ->with(['mensaje' => 'Libro creado con éxito', 'tipo' => 'alert-success']);
     }
     /**
      * Display the specified resource.
@@ -81,7 +83,8 @@ class LibroController extends Controller
         $libro->autor = $request->autor;
         $libro->save();
         $libro->estudiantes()->sync($request->estudiante_id);
-        return redirect()->route('libro.show', $libro->id);
+        return redirect()->route('libro.show', $libro->id)
+          ->with(['mensaje' => 'Libro actualizado con éxito', 'tipo' => 'alert-success']);
     }
     /**
      * Remove the specified resource from storage.
@@ -92,7 +95,8 @@ class LibroController extends Controller
     public function destroy(Libro $libro)
     {
         $libro->delete();
-        return redirect()->route('libro.index');
+        return redirect()->route('libro.index')
+          ->with(['mensaje' => 'Libro eliminado con éxito', 'tipo' => 'alert-warning']);
     }
 
     public function notificarLibroDevuelto(Libro $libro)
