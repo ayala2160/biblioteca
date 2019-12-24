@@ -27,4 +27,9 @@ Route::get('libro/{libro}/devuelto', 'LibroController@notificarLibroDevuelto')->
 Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
 Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
 Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
+//Bienvenida
+Route::get('/hola/{nombre?}/{apellido?}', 'SitioController@bienvenida');
+//Contacto
+Route::get('contacto', 'SitioController@contacto')->name('contacto');
+Route::post('contacto-guardar', 'SitioController@guardaContacto')->name('guardar');
 //});
