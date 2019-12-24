@@ -20,6 +20,7 @@ class CreateLibrosTable extends Migration
             $table->string('autor');
             $table->string('estatus', 30)->default('');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')

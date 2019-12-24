@@ -18,7 +18,11 @@
                   </tr>
                   @foreach($libros as $libro)
                     <tr>
-                      <td>{{ $libro->titulo }}</td>
+                      <td>
+                          <a href="{{ route('libro.show', $libro->id) }}">
+                              {{ $libro->titulo }}
+                          </a>
+                      </td>
                       <td>
                         <ul>
                         @foreach($libro->estudiantes as $estudiante)

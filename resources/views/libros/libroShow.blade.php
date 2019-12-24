@@ -14,7 +14,9 @@
                     <li>{{ $estudiante->nombre }}</li>
                   @endforeach
                 </ul>
-                <a href="{{ route('libro.create') }}" class="btn btn-primary">Agregar libro</a>
+                {!! Form::model($libro, ['route' => ['libro.destroy', $libro->id], 'method' => 'DELETE']) !!}
+                    {!! Form::submit('Borrar', ['class' => 'bnt btn-sm btn-danger']) !!}
+                {!! Form::close() !!}
                 </div>
             </div>
             @include('archivos.archivoForm', ['modelo_id' => $libro->id, 'modelo_type' => 'App\Libro'])

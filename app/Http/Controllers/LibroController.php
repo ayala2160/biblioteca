@@ -91,7 +91,8 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->delete();
+        return redirect()->route('libro.index');
     }
 
     public function notificarLibroDevuelto(Libro $libro)
