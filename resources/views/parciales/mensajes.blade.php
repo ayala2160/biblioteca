@@ -1,6 +1,6 @@
 @if(Session::has('mensaje'))
-<div class="row justify-content-center"> <!-- Agregada para efectos de esito -->
-    <div class="col-8"> <!-- Agregada para efectos de esito -->
+<div class="row justify-content-center"> <!-- Agregada para efectos de estilo -->
+    <div class="col-8"> <!-- Agregada para efectos de estilo -->
 
         <!-- Sección que muestra la alerta -->
         <div class="alert {{ Session::get('tipo', 'alert-info') }} alert-dismissible" role="alert">

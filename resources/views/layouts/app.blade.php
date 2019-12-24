@@ -73,7 +73,8 @@
         </nav>
 
         <main class="py-4">
-          @include('parciales.mensajes')
+            @include('parciales.formErrors')
+            @include('parciales.mensajes')
             @yield('content')
         </main>
     </div>

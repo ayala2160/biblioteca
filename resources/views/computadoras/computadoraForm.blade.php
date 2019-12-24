@@ -8,17 +8,6 @@
                 <div class="card-header">Registro de equipos</div>
 
                 <div class="card-body">
-                    <!-- Código que muestra errores -->
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     @if(isset($computadora))
                       {!! Form::model($computadora, ['route' => ['computadora.update', $computadora->id], 'method' => 'PATCH']) !!}
                     @else
